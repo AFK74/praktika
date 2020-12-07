@@ -1,0 +1,36 @@
+<?php
+	class generate{
+		public function play($sopernik,$ya){
+			$ya = $_POST['ya'];
+			$sopernik = mt_rand(1,100);
+			if($ya > $sopernik && $ya < 101){
+				echo 'Победа </br>' ;
+				echo $ya . '>' . $sopernik;
+			}elseif ($ya < $sopernik) {
+				echo 'Поражение </br>' ;
+				echo $ya . '<' . $sopernik;
+			}elseif ($ya == $sopernik){
+				echo 'Ничья </br>';	
+				echo $ya . '=' . $sopernik;	
+			}elseif ($ya > 100) {
+				echo 'Число больше 100';
+			}
+		}
+	}
+if(isset($_POST['submit'])){
+	$start = new generate;
+	$start -> play($sopernik,$ya);
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BROVKIN</title>
+</head>
+<body>
+<form method="POST">
+	<input type="number" name="ya" placeholder="число от 1 до 100" required>
+	<button type="submit" name="submit">Генерация</button>
+</form>
+</body>
+</html>
